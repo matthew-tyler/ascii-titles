@@ -1,65 +1,47 @@
-# ascii-titles README
+# ASCII Titles
 
-This is the README for your extension "ascii-titles". After writing up a brief description, we recommend including the following sections.
+         _      ____     ____   ___   ___     _____   _   _     _
+        / \    / ___|   / ___| |_ _| |_ _|   |_   _| (_) | |_  | |   ___   ___ 
+       / _ \   \___ \  | |      | |   | |      | |   | | | __| | |  / _ \ / __|
+      / ___ \   ___) | | |___   | |   | |      | |   | | | |_  | | |  __/ \__ \
+     /_/   \_\ |____/   \____| |___| |___|     |_|   |_|  \__| |_|  \___| |___/
 
-## Features
+A simple VSCode extension built on figlet.js to generate ascii art comment titles
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+Patorjk/ figlet.js : https://github.com/patorjk/figlet.js
 
-For example if there is an image subfolder under your extension project workspace:
+Built as a small project to try out the VSCode extension API, inspiration taken 
+from Microsoft's VSCode Extension Samples. 
 
-\!\[feature X\]\(images/feature-x.png\)
+Microsoft/ VSCode Extension Samples : https://github.com/microsoft/vscode-extension-samples
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
 
-## Requirements
+# How To Use
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+Using the the command palette (<kbd>control</kbd> + <kbd>shift</kbd> + <kbd>p</kbd>)
 
-## Extension Settings
+Insert Title At Selection:
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+    Select the whole line that includes the text. This will use the settings that are currently set.
 
-For example:
+Insert Random Title At Selection:
 
-This extension contributes the following settings:
+    Works the same way but uses a random font, with the fonts default kerning and line width.
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+Set Font: 
 
-## Known Issues
+    Sets the font to use when using Insert Title At Selection.
+    A graphical view of fonts can be found here: 
+    https://ascii.today/
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+Set Kerning: 
 
-## Release Notes
+    Sets the kerning to use when using Insert Title At Selection
 
-Users appreciate release notes as you update your extension.
+Set Width:
 
-### 1.0.0
+    Sets the width to use when using Insert Title At Selection
 
-Initial release of ...
+Set Whitespace break:
 
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+    Sets the whitespace break property when using Insert Title At Selection
