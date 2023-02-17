@@ -1,9 +1,7 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 const vscode = require("vscode");
 const figlet = require('figlet');
 
-var settings = {
+const settings = {
     font: 'Standard',
     horizontalLayout: 'default',
     verticalLayout: 'default',
@@ -11,26 +9,34 @@ var settings = {
     whitespaceBreak: true
 }
 
+//      _      ____     ____   ___   ___     _____   _   _     _
+//     / \    / ___|   / ___| |_ _| |_ _|   |_   _| (_) | |_  | |   ___   ___ 
+//    / _ \   \___ \  | |      | |   | |      | |   | | | __| | |  / _ \ / __|
+//   / ___ \   ___) | | |___   | |   | |      | |   | | | |_  | | |  __/ \__ \
+//  /_/   \_\ |____/   \____| |___| |___|     |_|   |_|  \__| |_|  \___| |___/
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
+// A simple VSCode extension built on figlet.js to generate ascii art comment titles
+
+// Patorjk/ figlet.js : https://github.com/patorjk/figlet.js
+
+// Built as a small project to try out the VSCode extension API, inspiration taken 
+// from Microsoft's VSCode Extension Samples. 
+
+// Microsoft/ VSCode Extension Samples : https://github.com/microsoft/vscode-extension-samples
 
 /**
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
 
-    // The command has been defined in the package.json file
-    // Now provide the implementation of the command with  registerCommand
-    // The commandId parameter must match the command field in package.json
-    let disposable = vscode.commands.registerTextEditorCommand("ascii-titles.randomtitle",
+    // Generatres a title using a random font
+    let randomtitle = vscode.commands.registerTextEditorCommand("ascii-titles.randomtitle",
         function (editor) {
-            // The code you place here will be executed every time your command is executed
+
             const document = editor.document;
             const selection = editor.selection;
             const fontlist = figlet.fontsSync();
 
-            // Get the word within the selection
             var title = document.getText(selection);
 
             title = figlet.textSync(title, fontlist[Math.floor(Math.random() * fontlist.length)])
@@ -42,16 +48,15 @@ function activate(context) {
         }
     );
 
-    context.subscriptions.push(disposable);
+    context.subscriptions.push(randomtitle);
 
-
+    // Generates a title using the settings object
     let withsettings = vscode.commands.registerTextEditorCommand("ascii-titles.title",
         function (editor) {
 
             const document = editor.document;
             const selection = editor.selection;
 
-            // Get the word within the selection
             var title = document.getText(selection);
 
             title = figlet.textSync(title, settings);
@@ -64,23 +69,26 @@ function activate(context) {
 
     context.subscriptions.push(withsettings);
 
-
+    // Sets the property of the settings object using a quickpick view 
     let setFont = vscode.commands.registerCommand("ascii-titles.setfont", async () => {
         await showQuickFontPick();
     });
     context.subscriptions.push(setFont);
 
+    // Sets the property of the horizontal kerning with a quickpick view
     let setKerning = vscode.commands.registerCommand("ascii-titles.setkerning", async () => {
         await showQuickKerningPick();
     })
     context.subscriptions.push(setKerning);
 
-
+    // Sets the width property with a inputbox, as an integer bound betewen 10 and 300
+    // Bound is set somewhat randomly, as not all fonts seem to support higher width
     let setWidth = vscode.commands.registerCommand("ascii-titles.setwidth", async () => {
         await showWidthInputBox();
     })
     context.subscriptions.push(setWidth);
 
+    // Sets the whitespace break property with a quickpick view
     let setBreak = vscode.commands.registerCommand("ascii-titles.setbreak", async () => {
         await showQuickBreakPick();
     })
@@ -88,7 +96,6 @@ function activate(context) {
 
 }
 
-// This method is called when your extension is deactivated
 function deactivate() { }
 
 
@@ -101,7 +108,6 @@ async function showQuickFontPick() {
         placeHolder: 'Pick a font',
     });
     settings.font = font;
-
 }
 
 async function showQuickKerningPick() {
@@ -119,7 +125,7 @@ async function showWidthInputBox() {
         placeHolder: 'Enter a number',
         validateInput: text => {
             const parsed = parseInt(text);
-            if (isNaN(parsed) || (9 > parsed || parsed > 81)) { return "Enter an Integer Between 10 & 80" };
+            if (isNaN(parsed) || (9 > parsed || parsed > 300)) { return "Enter an Integer Between 10 & 300" };
             return null;
         }
     });
