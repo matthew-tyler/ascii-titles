@@ -17,11 +17,11 @@
     "commands": [
       {
         "command": "ascii-titles.randomtitle",
-        "title": "Random Title"
+        "title": "Insert Random Title At Selection"
       },
       {
         "command": "ascii-titles.title",
-        "title": "Title"
+        "title": "Insert Title At Selection"
       },
       {
         "command": "ascii-titles.setfont",

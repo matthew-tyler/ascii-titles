@@ -98,7 +98,6 @@ function activate(context) {
 
 function deactivate() { }
 
-
 const window = vscode.window
 
 async function showQuickFontPick() {
