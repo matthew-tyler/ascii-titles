@@ -16,9 +16,30 @@
   "contributes": {
     "commands": [
       {
-        "command": "ascii-titles.helloWorld",
-        "title": "Hello World"
+        "command": "ascii-titles.randomtitle",
+        "title": "Random Title"
+      },
+      {
+        "command": "ascii-titles.title",
+        "title": "Title"
+      },
+      {
+        "command": "ascii-titles.setfont",
+        "title": "Set Font"
+      },
+      {
+        "command": "ascii-titles.setkerning",
+        "title": "Set Kerning"
+      },
+      {
+        "command": "ascii-titles.setwidth",
+        "title": "Set Width"
+      },
+      {
+        "command": "ascii-titles.setbreak",
+        "title": "Set Whitespace Break"
       }
+    
     ]
   },
   "scripts": {
